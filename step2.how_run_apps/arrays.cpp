@@ -60,12 +60,60 @@ unsigned mystrlen(const char *str) {
 
 void mystrcat(char *to, const char *from) {
     unsigned len = mystrlen(to);
-    while (*from != '\0'){
+    while (*from != '\0') {
         to[len] = *from;
         *from++;
         ++len;
     }
-    to[len] ='\0';
+    to[len] = '\0';
+}
+
+void prefixSuffixArray(const char *pat, int m, int *pps) {
+    int length = 0;
+    pps[0] = 0;
+    int i = 1;
+    while (i < m) {
+        if (pat[i] == pat[length]) {
+            length++;
+            pps[i] = length;
+            i++;
+        } else {
+            if (length != 0) {
+                length = pps[length - 1];
+            } else {
+                pps[i] = 0;
+                i++;
+            }
+        }
+    }
+}
+
+int mystrstr(const char *text, const char *pattern) {
+    int m = (int) mystrlen(pattern);
+    int n = (int) mystrlen(text);
+    if (n == 0 && m == 0) return 0;
+    if (m == 0) return 0;
+    int pps[m];
+    prefixSuffixArray(pattern, m, pps);
+    int i, j;
+    i = j = 0;
+    int result = -1;
+    while (i < n) {
+        if (pattern[j] == text[i]) {
+            j++;
+            i++;
+        }
+        if (j == m) {
+            return i - j;
+        } else if (i < n && pattern[j] != text[i]) {
+            if (j != 0) {
+                j = pps[j - 1];
+            } else {
+                i = i + 1;
+            }
+        }
+    }
+    return result;
 }
 
 int main() {
@@ -84,5 +132,12 @@ int main() {
     char result[] = "";
     mystrcat(result, "C++");
     std::cout << result << std::endl;
+    std::cout << mystrstr("I love C++", "C++") << std::endl;
+    std::cout << mystrstr("", "JAVA") << std::endl;
+    std::cout << mystrstr("I love C++", "") << std::endl;
+    std::cout << mystrstr("", "") << std::endl;
+    std::cout << mystrstr("Text","Text Big") << std::endl;
+    std::cout << mystrstr("ababc","ab") << std::endl;
+    std::cout << mystrstr("ababc","abc") << std::endl;
     return 0;
 }
