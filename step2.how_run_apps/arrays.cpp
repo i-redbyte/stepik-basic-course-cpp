@@ -36,14 +36,30 @@ void rotate(int a[], unsigned size, unsigned shift) {
     }
 }
 
+/**Очень часто для работы со строками нам нужно сначала вычислить длину строки.
+ * Для C-style строк длина нигде явно не хранится, но её можно вычислить.
+ * Напишите функцию, которая вычисляет длину C-style строки. Учтите, что завершающий нулевой символ считать не нужно.
+ * Требования к реализации: при выполнении этого задания вы можете создавать любые вспомогательные функции.
+ * Вводить или выводить что-либо не нужно. Реализовывать функцию main не нужно.*/
+
+unsigned mystrlen(const char *str) {
+    unsigned result = 0;
+    while (*str++) ++result;
+    return result;
+}
+
 int main() {
 
     int a[] = {1, 2, 3, 4, 5};
 
-    rotate(a, 5, 23);
+    rotate(a, 5, 2);
     std::cout << std::endl;
-    for (int i = 0; i < 5; ++i) {
-        std::cout << a[i] << " ";
+    for (int i : a) {
+        std::cout << i << " ";
     }
+    std::cout << std::endl;
+    std::cout << mystrlen("I love C++") << std::endl;
+    std::cout << mystrlen("12345") << std::endl;
+    std::cout << mystrlen("12\0 345") << std::endl;
     return 0;
 }
