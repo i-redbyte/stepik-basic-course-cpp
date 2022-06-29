@@ -19,6 +19,32 @@ char *resize(const char *str, unsigned size, unsigned new_size) {
     return new_mem;
 }
 
+/** Реализуйте функцию getline, которая считывает поток ввода посимвольно, пока не достигнет конца потока
+ * или не встретит символ переноса строки ('\n'), и возвращает C-style строку с прочитанными символами.
+ * Обратите внимание, что так как размер ввода заранее неизвестен, то вам нужно будет перевыделять память
+ * в процессе чтения, если в потоке ввода оказалось больше символов, чем вы ожидали.
+ * Память, возвращенная из функции будет освобождена оператором delete[].
+ * Символ переноса строки ('\n') добавлять в строку не нужно, но не забудьте, что в конце C-style строки должен быть завершающий нулевой символ.*/
+char *getline() {
+    char c = '\0';
+    unsigned size = 1000;
+    char *result = new char[size];
+    unsigned count = 0;
+    while (std::cin.get(c) && c != '\n') {
+        if (count >= size) {
+            unsigned olds_ize = size;
+            size = size * sizeof(char) * 10;
+            result = resize(result, olds_ize, size);
+        }
+        result[count] = c;
+        ++count;
+    }
+    result[count] = '\0';
+    return result;
+}
+
 int main() {
+    char *s = getline();
+    std::cout << s << std::endl;
     return 0;
 }
