@@ -14,3 +14,4 @@ add_executable(simple_stack_overflow step2.how_run_apps/simple_stack_overflow.cp
 add_executable(recursions step2.how_run_apps/recursions.cpp)
 add_executable(arrays step2.how_run_apps/arrays.cpp)
 add_executable(dynamic step2.how_run_apps/dynamic.cpp)
+add_executable(matrix step2.how_run_apps/matrix.cpp)
