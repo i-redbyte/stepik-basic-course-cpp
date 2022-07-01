@@ -16,6 +16,26 @@ struct String {
         this->str = new char[size + 1];
         strcpy(this->str, str);
     }
+/** Конструкторов у структуры может быть несколько. Для строки может оказаться полезным заполняющий конструктор
+ * (например, чтобы создать строку пробелов). Заполняющий конструктор принимает число и символ, и создает строку с
+ * заданным количеством повторений переданного символа. Условия налагаемые на реализацию конструктора те же самые
+ * (в поле size размер без учета завершающего 0 символа, в поле str C-style строка, т.е. с завершающим 0 символом).
+ * Кроме конструктора в этой задаче вам нужно также реализовать и деструктор, который освободит выделенную память.*/
+    /* Реализуйте этот конструктор */
+    String(size_t n, char c) {
+        if (n < 0) return;
+        this->str = new char[n + 1];
+        for (size_t i = 0; i < n; ++i) {
+            this->str[i] = c;
+        }
+        this->str[n] = '\0';
+        this->size = n;
+    }
+
+    /* и деструктор */
+    ~String() {
+        delete[] str;
+    }
 
     size_t size;
     char *str;
@@ -23,6 +43,9 @@ struct String {
 
 int main() {
     String s("Lenin");
-    std::cout <<"Length = "<< s.size<< " for string: " << s.str << std::endl;
+    std::cout << "Length = " << s.size << " for string: " << s.str << std::endl;
+    String s1(5, '*');
+    std::cout << "String for symbol: " << s1.str << std::endl;
+
     return 0;
 }
