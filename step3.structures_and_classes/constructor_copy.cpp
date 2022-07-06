@@ -27,10 +27,19 @@ struct String {
     }
 
     /* Реализуйте конструктор копирования */
-    String(const String &other) : size(other.size), str(new char[size+1]) {
+    String(const String &other) : size(other.size), str(new char[size + 1]) {
         strcpy(this->str, other.str);
     }
 
+    /* Реализуйте оператор присваивания */
+    String &operator=(const String &other) {
+        if (this == &other) return *this;
+        delete[] str;
+        this->size = other.size;
+        this->str = new char[size + 1];
+        strcpy(this->str, other.str);
+        return *this;
+    }
 
     void append(String &other) {
         size_t new_size = size + other.size;
@@ -48,6 +57,9 @@ struct String {
 };
 
 int main() {
-
+    String s1("123");
+    String s2("234");
+    s1 = s2;
+    std::cout << s1.str << std::endl;
     return 0;
 }
