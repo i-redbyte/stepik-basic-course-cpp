@@ -51,7 +51,11 @@ struct String {
         str = new_ptr;
         size = strlen(str);
     }
+    char & at(size_t idx)       {
 
+        return str[idx];
+    }
+    char   at(size_t idx) const {return str[idx]; }
     size_t size;
     char *str;
 };
@@ -61,5 +65,11 @@ int main() {
     String s2("234");
     s1 = s2;
     std::cout << s1.str << std::endl;
+    String greet("Hello");
+    char ch1 = greet.at(0);
+    String const const_greet("Hello, Const!");
+    char const &ch2 = const_greet.at(0);
+    std::cout << ch1 << std::endl;
+    std::cout << ch2 << std::endl;
     return 0;
 }
