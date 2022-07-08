@@ -21,3 +21,4 @@ add_executable(step_3_constructor_copy step3.structures_and_classes/constructor_
 add_executable(step_4_foo step4.oop/foo.cpp)
 add_executable(step_4_reload_fun step4.oop/reload_fun.cpp)
 add_executable(step_4_calc step4.oop/calc.cpp)
+add_executable(step_4_visitor step4.oop/visitor.cpp)
