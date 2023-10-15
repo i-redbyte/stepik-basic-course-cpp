@@ -1,3 +1,11 @@
+/**
+ * Еще одна важная группа операторов, которые полезно реализовать для класса рациональных чисел — это операторы сравнения.
+ * Реализуйте операторы <, <=, >, >=, ==, != для класса Rational так, чтобы можно было сравнивать объекты класса Rational
+ * не только друг с другом, но и с целыми числами.
+ * При решении задания не используйте метод to_double, он введен в класс, в первую очередь, для удобства тестирования.
+ * Вы можете определять любые вспомогательные методы или функции если необходимо.
+ * Требования к реализации: ваш код не должен вводить или вводить что-либо, реализовывать функцию main не нужно.
+  */
 struct Rational {
     Rational(int numerator = 0, int denominator = 1);
 
@@ -32,7 +40,7 @@ struct Rational {
     }
 
     bool operator==(int b) {
-        return numerator_ == (double)b * denominator_;
+        return numerator_ == (double) b * denominator_;
     }
 
     bool operator!=(Rational const &b) {
@@ -44,7 +52,7 @@ struct Rational {
     }
 
     bool operator>(int b) {
-        return numerator_ > (double)b * denominator_;
+        return numerator_ > (double) b * denominator_;
     }
 
     bool operator<=(Rational const &b) {
@@ -60,7 +68,7 @@ struct Rational {
     }
 
     bool operator<(int b) {
-        return (numerator_ < (double)b * denominator_);
+        return (numerator_ < (double) b * denominator_);
     }
 
     bool operator>=(Rational const &b) {
@@ -93,7 +101,7 @@ bool operator!=(int a, Rational const &b) {
 }
 
 bool operator>(int a, Rational const &b) {
-    return (b.numerator_ < (double)a * b.denominator_);
+    return (b.numerator_ < (double) a * b.denominator_);
 }
 
 bool operator<=(int a, Rational const &b) {
@@ -101,7 +109,7 @@ bool operator<=(int a, Rational const &b) {
 }
 
 bool operator<(int a, Rational const &b) {
-    return (b.numerator_ > (double)a * b.denominator_);
+    return (b.numerator_ > (double) a * b.denominator_);
 }
 
 bool operator>=(int a, Rational const &b) {
