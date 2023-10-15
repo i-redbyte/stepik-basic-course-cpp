@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.20.2)
 project(stepik)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -22,3 +22,4 @@ add_executable(step_4_foo step4.oop/foo.cpp)
 add_executable(step_4_reload_fun step4.oop/reload_fun.cpp)
 add_executable(step_4_calc step4.oop/calc.cpp)
 add_executable(step_4_visitor step4.oop/visitor.cpp)
+add_executable(step_5_overload step5.overload/operator_overload.cpp)
