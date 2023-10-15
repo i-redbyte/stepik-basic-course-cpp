@@ -1,3 +1,3 @@
-## Решение задач по курсу
+## Решение задач по курсу Stepik:
 
-## https://stepik.org/course/7/syllabus
+## [Программирование на языке C++](https://stepik.org/course/7/syllabus)
