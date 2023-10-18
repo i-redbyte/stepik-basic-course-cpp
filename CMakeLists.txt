@@ -28,3 +28,4 @@ add_executable(step_5_overload_5 step5.additional_features/operator_overload_5.c
 add_executable(step_5_smart_1 step5.additional_features/smart_point_2.cpp)
 add_executable(step_6_tmpClass step6.templates/tmpClass_3.cpp)
 add_executable(step_6_tmpFun1 step6.templates/tmpFunc_1.cpp)
+add_executable(step_6_tmpFun2 step6.templates/tmpFunc_2.cpp)
